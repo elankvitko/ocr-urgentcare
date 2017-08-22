@@ -1,0 +1,71 @@
+<h1>HIP Instructions</h1>
+
+<% if params[ :secondary ] %>
+  <h1>PLEASE UPLOAD <%= params[ :secondary ] %> AS SECONDARY IN MEDITOUCH!</h1>
+<% end %>
+
+<p>Please follow the steps below:</p>
+
+<div class="steps">
+  <ul>
+    <li>Please click <a href="http://www.emblemhealth.com/Providers" target="_blank">Here</a> to check eligibility.</li>
+    <br>
+    <li>If HIP is primary (Please See Example 1 Below), please click on the details section to the left and follow the next steps:
+      <br>
+      <ul>
+        <li>Please verify their managing entity
+          <br>
+          <p><b>The managing entities may be the following:</b></p>
+          <ul>
+            <li>HIP (Example 2)</li>
+            <li>Montefiore (Example 3)</li>
+            <li>HealthCare Partners (Example 4)</li>
+          </ul>
+        </li>
+        <br>
+        <li>Please choose the correct payor from the list and upload to MediTouch</li>
+      </ul>
+     </li>
+     <br>
+     <li>If HIP is secondary, please ask for the <b>Primary Insurance Card</b> and upload below:
+       <br>
+       <ul>
+         <li>
+           Please Upload Primary insurace
+           <div class="section ocr-single-confirm-primary">
+             <div class="single-ocr-form-holder">
+               <%= form_tag({:controller => "home", :action => 'ocr_checker'}, {:class => "ocr-single-confirm-primary", :multipart => true} ) do %>
+               <div class="form-group">
+                 <input type="hidden" name="secondary" value="GHI">
+                 <%= file_field_tag 'picture' %>
+                 <br>
+                 <%= submit_tag 'Submit' %>
+               </div>
+               <% end %>
+             </div>
+           </div>
+         </li>
+       </ul>
+     </li>
+    <div class="example-holder">
+      <div class="primary">
+        <p>Example 1</p>
+        <%= image_tag "HIP Prim.PNG" %>
+      </div>
+      <div class="secondary">
+        <p>Example 2</p>
+        <%= image_tag "HIP HIP.PNG" %>
+      </div>
+    </div>
+    <div class="example-holder">
+      <div class="primary">
+        <p>Example 3</p>
+        <%= image_tag "HIP Montefiore.PNG" %>
+      </div>
+      <div class="secondary">
+        <p>Example 4</p>
+        <%= image_tag "HIP HealthCarePartners.PNG" %>
+      </div>
+    </div>
+  </ul>
+</div>

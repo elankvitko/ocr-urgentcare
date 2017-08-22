@@ -1,0 +1,16 @@
+<h1>Medicare Instructions</h1>
+
+<% if params[ :secondary ] %>
+  <h1>PLEASE UPLOAD <%= params[ :secondary ] %> AS SECONDARY IN MEDITOUCH!</h1>
+<% end %>
+
+<p>Please follow the steps below:</p>
+
+<ul>
+  <li>Please click <a href="https://login.healthfusion.com/" target="_blank">Here</a> to check eligibility.</li>
+</ul>
+
+<h4>Please make sure the patient is active for Part B benefits. If patient is active, please check if there is any other HMO advantage plan (PLEASE SEE HIGHLIGHTED IMAGE BELOW)!</h4>
+<h4>If a patient is eligible and has an HMO advantage plan, please ask for the plan's insurance card.</h4>
+<h4>If there is no HMO advantage plan, leave the regular Medicare Part B as primary!</h4>
+<%= image_tag "Cotten.PNG" %>

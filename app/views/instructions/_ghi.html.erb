@@ -1,0 +1,43 @@
+<h1>GHI Instructions</h1>
+
+<% if params[ :secondary ] %>
+  <h1>PLEASE UPLOAD <%= params[ :secondary ] %> AS SECONDARY IN MEDITOUCH!</h1>
+<% end %>
+
+<p>Please follow the steps below:</p>
+
+<div class="steps">
+  <ul>
+    <li>Please click <a href="http://www.emblemhealth.com/Providers" target="_blank">Here</a> to check eligibility.</li>
+    <li>
+       - If GHI is primary (Please See Example 1 Below), then upload the card as Primary in MediTouch
+       <br>
+       - If GHI is secondary to another insurance (Please See Example 2 - note that United Healthcare in this case is primary), then ask for primary Insurance Card!
+     </li>
+     <li>
+       Please Upload Primary insurace
+       <div class="section ocr-single-confirm-primary">
+         <div class="single-ocr-form-holder">
+           <%= form_tag({:controller => "home", :action => 'ocr_checker'}, {:class => "ocr-single-confirm-primary", :multipart => true} ) do %>
+           <div class="form-group">
+             <input type="hidden" name="secondary" value="GHI">
+             <%= file_field_tag 'picture' %>
+             <br>
+             <%= submit_tag 'Submit' %>
+           </div>
+           <% end %>
+         </div>
+       </div>
+     </li>
+    <div class="example-holder">
+      <div class="primary">
+        <p>Example 1</p>
+        <%= image_tag "GHI Prim.PNG" %>
+      </div>
+      <div class="secondary">
+        <p>Example 2</p>
+        <%= image_tag "GHI Sec.PNG" %>
+      </div>
+    </div>
+  </ul>
+</div>

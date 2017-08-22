@@ -1,0 +1,108 @@
+<h1>Please type in patient's Date of Birth:</h1>
+
+<div id="section dob">
+  <div class="dob-form-holder">
+    <form class="dob-check" method="get">
+      <input type="date" name="dob">
+      <br>
+      <input type="submit" value="Next">
+    </form>
+  </div>
+</div>
+
+<div class="section ocr-single">
+  <div class="form-single-head">
+    <h3>Please provide patient's insurance card photo:</h3>
+  </div>
+  <div class="single-ocr-form-holder">
+    <%= form_tag({:action => 'ocr_checker'}, {:class => "ocr-single", :multipart => true} ) do %>
+    <div class="form-group">
+      <%= file_field_tag 'picture' %>
+      <br>
+      <%= submit_tag 'Submit' %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="section over-inst">
+  <h3>Please ask patient for 2 insurance cards (Medicare, Medicare Advantage, or Medicare Supplimental)</h3>
+  <p>Some patients who are dual eligible will have an additional Medicaid card.</p>
+
+  <br>
+
+  <p>Does patient have Medicare card available?</p>
+  <form class="yesno" action="/check" method="get">
+    <select name="choice">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+    <br>
+    <input type="submit" value="Next">
+  </form>
+  <p class="hide-on-yesno">
+    If patient does not have Medicare card available, please ask for social and check eligibility <a href="https://login.healthfusion.com/" target="_blank">Here</a>
+    <br>
+    When checking, please try each of the following codes in combination with the social:
+    <ul class="hide-on-yesno">
+      <li>A</li>
+      <li>B</li>
+      <li>C</li>
+      <li>T</li>
+    </ul>
+  </p>
+</div>
+
+<div class="section ocr-double">
+  <div class="double-ocr-form-holder">
+    <%= form_tag({:action => 'ocr_checker'}, {:class => "ocr-double", :multipart => true} ) do %>
+    <div class="form-group">
+      <div class="form-double-head">
+        <p>Please provide Medicare insurance card:</p>
+      </div>
+      <label for="medicare">Medicare Insurance Card</label>
+      <br>
+      <%= file_field_tag 'picture' %>
+      <br>
+      <br>
+      <%= submit_tag 'Submit' %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<p class="response"></p>
+
+<script type="text/javascript">
+$( document ).ready( function() {
+  $( "form.dob-check" ).on( "submit", function( e ) {
+    e.preventDefault();
+    var dateString = e.target[ 0 ].value
+    var today = new Date();
+    var birthDate = new Date( dateString );
+    var age = today.getFullYear() - birthDate.getFullYear();
+
+    if ( age < 65 ) {
+      $( ".over-inst" ).hide();
+      $( ".ocr-single" ).show();
+    } else {
+      $( ".ocr-single" ).hide();
+      $( ".over-inst" ).show();
+    }
+  });
+
+  $( "form.yesno" ).on( "submit", function( e ) {
+    e.preventDefault();
+
+    var valuation = e.target[ 0 ].value;
+
+    if ( valuation === "no" ) {
+      $( ".ocr-double" ).hide();
+      $( ".hide-on-yesno" ).show();
+    } else {
+      $( ".hide-on-yesno" ).hide();
+      $( ".ocr-double" ).show();
+    }
+  });
+});
+</script>
