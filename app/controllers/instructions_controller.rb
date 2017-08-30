@@ -4,7 +4,7 @@ class InstructionsController < ApplicationController
 
     session[ :ocr_text ] = nil
 
-    key_words = [ "allied", "oxford", "medicare", "healthfirst", "emblemhealth", "emblemhealth" ]
+    key_words = [ "allied", "oxford", "medicare", "healthfirst", "emblemhealth", "emblemhealth", "metroplus", "1199", "affinity", "blue" ]
 
     key_hash = {
                 "allied" => "mail: allied benefit svstems, inc. \r\n",
@@ -13,8 +13,15 @@ class InstructionsController < ApplicationController
                 "healthfirst" => "healthfirst",
                 "emblemhealth" => {
                                     "13551" => "ghi",
-                                    "2845" => "hip",
-                                  }
+                                    "2845" => "hip"
+                                  },
+                "metroplus" => "metroplus",
+                "1199" => "1199seiu",
+                "affinity" => "affinity",
+                "blue" => {
+                            "blue cross" => "blue",
+                            "bluecross" => "blue"
+                          }
               }
 
     text_found = []

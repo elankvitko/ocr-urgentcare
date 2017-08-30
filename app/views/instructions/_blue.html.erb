@@ -1,0 +1,67 @@
+<h1>BlueCross BlueShield Instructions</h1>
+
+<% if params[ :secondary ] %>
+  <h1>PLEASE UPLOAD <%= params[ :secondary ] %> AS SECONDARY IN MEDITOUCH!</h1>
+<% end %>
+
+<p>Please follow the steps below:</p>
+
+<div class="steps">
+  <ul>
+    <li>Please click <a href="https://login.healthfusion.com/" target="_blank">Here</a> to check eligibility.</li>
+    <li>
+       - If coverage is active, please follow the instructions below:
+       <ul>
+         <li>Please check to see if there is any other payor (See Example 1 - In this case Medicare is the primary payor when BCBS is secondary)</li>
+         <li>If there is another payor, please ask for another insurance card and upload immediately!</li>
+         <%= form_tag({:controller => "home", :action => 'ocr_checker'}, {:class => "ocr-single-confirm-primary", :multipart => true} ) do %>
+         <div class="form-group">
+           <input type="hidden" name="secondary" value="BCBS">
+           <%= file_field_tag 'picture' %>
+           <br>
+           <%= submit_tag 'Submit' %>
+         </div>
+         <% end %>
+         <li>If there is no other payor, please proceed with BCBS as primary!</li>
+         <li>After checking payor, please check the relationship of card holder and do the following:</li>
+          <ol>
+            <li>If relationship is "Child", "Spouse", or anything other than "Subscriber" (See Example 2):</li>
+            <ul>
+              <li>Ask for policy holder name and D.O.B</li>
+              <li>Create/Update patient profile accordingly.</li>
+            </ul>
+            <li>If relationship is "Subscriber":</li>
+            <ul>
+              <li>Please Create/Update patient profile accordingly.</li>
+            </ul>
+          </ol>
+       </ul>
+       <br>
+       <li>
+         - If coverage is not active, please ask for another insurance card and upload below:
+       </li>
+       <div class="section ocr-single-confirm-primary">
+         <div class="single-ocr-form-holder">
+           <%= form_tag({:controller => "home", :action => 'ocr_checker'}, {:class => "ocr-single-confirm-primary", :multipart => true} ) do %>
+           <div class="form-group">
+             <%= file_field_tag 'picture' %>
+             <br>
+             <%= submit_tag 'Submit' %>
+           </div>
+           <% end %>
+         </div>
+       </div>
+     </li>
+  </ul>
+
+  <div class="example-holder">
+    <div class="primary">
+      <p>Example 1</p>
+      <%= image_tag "BCBS Sec.PNG" %>
+    </div>
+    <div class="secondary">
+      <p>Example 2</p>
+      <%= image_tag "BCBS Child.PNG" %>
+    </div>
+  </div>
+</div>

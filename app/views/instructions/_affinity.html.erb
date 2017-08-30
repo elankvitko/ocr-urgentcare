@@ -1,0 +1,31 @@
+<h1>Affinity Instructions</h1>
+
+<% if params[ :secondary ] %>
+  <h1>PLEASE UPLOAD <%= params[ :secondary ] %> AS SECONDARY IN MEDITOUCH!</h1>
+<% end %>
+
+<p>Please follow the steps below:</p>
+
+<div class="steps">
+  <ul>
+    <li>Please click <a href="https://affinityportal.affinityplan.org/portal/" target="_blank">Here</a> to check eligibility.</li>
+    <li>
+       - When checking eligibility, please use the Member ID ONLY! No other field needs any input! (Refer to example 1)
+       <br>
+       - If patient is eligibile, please proceed with insurance and follow the rules below:
+       <ul>
+         <li>If Member ID contains only numbers, please select the Payer ID: 13334</li>
+         <li>If Member ID begins with the letter "H", please select the Payer ID: 23334</li>
+         <li>If Member ID contains the letter "M" in the middle, please select the Payer ID: 13333</li>
+       </ul>
+     </li>
+     <li>If patient is NOT eligible, please ask for another insurance!</li>
+  </ul>
+</div>
+
+<div class="example-holder">
+  <div class="primary">
+    <p>Example 1</p>
+    <%= image_tag "Affinity Portal.PNG" %>
+  </div>
+</div>

@@ -73,6 +73,10 @@
 
 <p class="response"></p>
 
+<div id="circle"></div>
+
+<%= javascript_include_tag "circle-progress.js" %>
+
 <script type="text/javascript">
 $( document ).ready( function() {
   $( "form.dob-check" ).on( "submit", function( e ) {
@@ -104,5 +108,15 @@ $( document ).ready( function() {
       $( ".ocr-double" ).show();
     }
   });
+
+  $( "form.ocr-single" ).on( "submit", function( e ) {
+    $('#circle').circleProgress({
+      value: 50,
+      size: 80,
+      fill: {
+        gradient: ["red", "orange"]
+      }
+    });
+  })
 });
 </script>
