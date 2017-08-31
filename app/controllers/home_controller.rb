@@ -47,6 +47,7 @@ class HomeController < ApplicationController
 
     ocr_text = ocr_result[ 0 ].to_a[ 2 ].join( " " ).downcase
 
+    File.delete( Rails.root.join( uploaded_io.original_filename ) )
     session[ :ocr_text ] = ocr_text
     redirect_to controller: 'instructions', action: 'index', secondary: @secondary
   end
