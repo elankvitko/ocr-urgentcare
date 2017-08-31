@@ -57,6 +57,8 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (0.8.1)
+    combine_pdf (1.0.6)
+      ruby-rc4 (>= 0.1.5)
     concurrent-ruby (1.0.5)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
@@ -147,6 +149,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    ruby-rc4 (0.1.5)
     ruby_dep (1.5.0)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
@@ -202,6 +205,7 @@ DEPENDENCIES
   cloudconvert-ruby
   cloudinary
   coffee-rails (~> 4.2)
+  combine_pdf
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   ocr_space

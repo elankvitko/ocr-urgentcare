@@ -10,11 +10,22 @@ class HomeController < ApplicationController
 
     uploaded_io = params[ :picture ]
 
-    file = File.open( Rails.root.join( uploaded_io.original_filename ), 'wb' ) do |file|
+    file = File.open( Rails.root.join( uploaded_io.original_filename ), 'wb' ) do | file |
       file.write( uploaded_io.read )
     end
 
-    result = upload_pic( uploaded_io.original_filename )
+    pdf = CombinePDF.new
+
+    each_pdf = CombinePDF.load( uploaded_io.original_filename ).pages
+
+    each_pdf.each_with_index do | page, idx |
+      if idx == each_pdf.length - 1
+        pdf << page
+      end
+    end
+
+    pdf.save "complete.pdf"
+    result = upload_pic( "complete.pdf" )
 
     @process = cloud_convert.build_process(input_format: :pdf, output_format: :jpg)
     @process_response = @process.create

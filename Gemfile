@@ -19,6 +19,8 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'cloudinary'
 
+gem 'combine_pdf'
+
 gem 'ocr_space'
 gem 'pry-rails'
 gem 'cloudconvert-ruby'
