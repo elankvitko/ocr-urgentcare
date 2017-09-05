@@ -22,7 +22,8 @@ class InstructionsController < ApplicationController
                   "metroplus",
                   "1199",
                   "affinity",
-                  "blue"
+                  "blue",
+                  "unitedhealthcare"
                 ]
 
     key_hash = {
@@ -34,7 +35,8 @@ class InstructionsController < ApplicationController
                 "metroplus" => "metroplus",
                 "1199" => "1199seiu",
                 "affinity" => "affinity",
-                "blue" => { "blue cross" => "blue", "bluecross" => "blue" }
+                "blue" => { "blue cross" => "blue", "bluecross" => "blue" },
+                "unitedhealthcare" => { "student" => "unitedhealthcarestudent" }
                }
 
 
